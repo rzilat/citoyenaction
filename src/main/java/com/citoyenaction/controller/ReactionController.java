@@ -1,0 +1,58 @@
+package com.citoyenaction.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.citoyenaction.domain.Reaction;
+import com.citoyenaction.service.ReactionService;
+
+
+
+@RestController
+@RequestMapping(value= "/citoyenaction")
+public class ReactionController {
+	
+	@Autowired
+	private ReactionService reactionService;
+	
+	@RequestMapping(value= "/reactions", method= RequestMethod.GET)
+	public ResponseEntity <List<Reaction>>getAllReactions(){
+		List<Reaction> reactions= reactionService.findAll();
+		return new ResponseEntity <>(reactions,HttpStatus.OK);
+		
+	}
+	
+	@RequestMapping(value= "/reaction", method= RequestMethod.POST)
+	@ResponseStatus(HttpStatus.CREATED)
+	public void addReaction(@RequestBody Reaction reaction) {
+		reactionService.addReaction(reaction);
+		
+	}
+	@RequestMapping(value= "/reaction/{id}", method= RequestMethod.GET)
+	public ResponseEntity <Reaction> getReaction(@PathVariable("id")long reactionId){
+		
+		Reaction reaction= reactionService.findReaction(reactionId);
+		return new ResponseEntity <> (reaction,HttpStatus.OK);
+		
+	}
+	
+	@RequestMapping(value= "/reaction/{id}", method= RequestMethod.DELETE)
+	public void deleteReaction(@PathVariable("id")long reactionId){
+		reactionService.deleteReaction(reactionId);
+	}
+	
+	@RequestMapping(value= "/reaction", method= RequestMethod.PUT)
+	public ResponseEntity <Reaction> updateReaction(@RequestBody Reaction reaction) {
+		return new ResponseEntity <> (reactionService.updateReaction(reaction),HttpStatus.OK);
+		
+	}
+	}
