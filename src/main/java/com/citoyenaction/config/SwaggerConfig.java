@@ -53,7 +53,7 @@ public class SwaggerConfig
 	{
 		return new ApiInfo("Codehelp service REST API", "Code Help service.",
 				env.getProperty("info.build.version"),
-				"CodeHelp service", 
+				"CitoyenAction service", 
 				new Contact("Reda Zilat", "http://www.citoyenaction.com", "redaovish200@hotmail.com"), "License of API", "API license URL", Collections.emptyList());
 	}
 	// @formatter:on
