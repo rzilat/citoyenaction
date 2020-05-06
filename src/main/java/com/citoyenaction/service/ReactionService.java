@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.citoyenaction.domain.Reaction;
 import com.citoyenaction.repository.ReactionRepository;
 
+
 @Service
 public class ReactionService {
 	
@@ -39,5 +40,9 @@ public class ReactionService {
 		
 	}
 	
+	public List<Reaction> findReactionsByActNonCiviqueId(long actNonCiviqueId) {
+		return this.reactionRepository.findReactionsByActNonCiviqueId(actNonCiviqueId);
+	
 
 }
+	}

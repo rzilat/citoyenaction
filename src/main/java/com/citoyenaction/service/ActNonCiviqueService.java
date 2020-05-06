@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.citoyenaction.domain.ActNonCivique;
+
 import com.citoyenaction.repository.ActNonCiviqueRepository;
 
 @Service
@@ -38,5 +39,11 @@ public class ActNonCiviqueService {
 		return this.actNonCiviqueRepository.save(actNonCivique);
 		
 	}
+	
+	public List<ActNonCivique> findActNonCiviquesByUserId(long userId) {
+		return this.actNonCiviqueRepository.findActNonCiviqueByUserId(userId);
+	
+
+}
 
 }

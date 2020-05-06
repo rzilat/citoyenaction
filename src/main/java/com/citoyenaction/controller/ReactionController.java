@@ -17,6 +17,7 @@ import com.citoyenaction.service.ReactionService;
 
 
 
+
 @RestController
 @RequestMapping(value= "/citoyenaction")
 public class ReactionController {
@@ -54,5 +55,13 @@ public class ReactionController {
 	public ResponseEntity <Reaction> updateReaction(@RequestBody Reaction reaction) {
 		return new ResponseEntity <> (reactionService.updateReaction(reaction),HttpStatus.OK);
 		
+	}
+	
+	@RequestMapping(value= "/reactions/findByActNonCiviqueId/{actNonCiviqueId}", method=RequestMethod.GET)
+	public ResponseEntity<List<Reaction>> getReactionsByActNonCiviqueId(@PathVariable("actNonCiviqueId")long actNonCiviqueId)
+	
+	{
+		List<Reaction> reactionList= reactionService.findReactionsByActNonCiviqueId(actNonCiviqueId);
+		return new ResponseEntity<>(reactionList,HttpStatus.OK);
 	}
 	}

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.citoyenaction.domain.ActNonCivique;
+
 import com.citoyenaction.service.ActNonCiviqueService;
 
 
@@ -52,5 +53,13 @@ public class ActNonCiviqueController {
 	public ResponseEntity <ActNonCivique> updateActNonCivique(@RequestBody ActNonCivique actNonCivique) {
 		return new ResponseEntity <> (actNonCiviqueService.updateActNonCivique(actNonCivique),HttpStatus.OK);
 		
+	}
+	
+	@RequestMapping(value= "/actNonCiviques/findByUserId/{userId}", method=RequestMethod.GET)
+	public ResponseEntity<List<ActNonCivique>> getActNonCiviqueByUserId(@PathVariable("userId")long userId)
+	
+	{
+		List<ActNonCivique> actNonCiviqueList= actNonCiviqueService.findActNonCiviquesByUserId(userId);
+		return new ResponseEntity<>(actNonCiviqueList,HttpStatus.OK);
 	}
 	}
