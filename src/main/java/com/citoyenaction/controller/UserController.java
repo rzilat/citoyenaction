@@ -43,8 +43,8 @@ public class UserController {
 		
 		User user= userService.findUser(id);
 		return new ResponseEntity <> (user,HttpStatus.OK);
-		
 	}
+	
 	@RequestMapping(value= "/user/{id}", method= RequestMethod.DELETE)
 	public void deleteUser(@PathVariable("id")long id){
 		userService.deleteUser(id);
@@ -53,7 +53,11 @@ public class UserController {
 	@RequestMapping(value= "/user", method= RequestMethod.PUT)
 	public ResponseEntity <User> updateUser(@RequestBody User user) {
 		return new ResponseEntity <> (userService.updateUser(user),HttpStatus.OK);
-		
+	}
+	
+	@RequestMapping(value= "/message", method= RequestMethod.GET)
+	public ResponseEntity <String> getMessage(){
+		return new ResponseEntity <> ("hallo world",HttpStatus.OK);
 	}
 	
 }
