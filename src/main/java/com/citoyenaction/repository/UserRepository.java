@@ -10,4 +10,6 @@ import com.citoyenaction.domain.User;
 @Repository("userRepository")
 public interface UserRepository extends JpaRepository<User,Long> {
 
+	User findUserByEmailAndPassword(String email, String password);
+
 }

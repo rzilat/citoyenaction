@@ -60,4 +60,12 @@ public class UserController {
 		return new ResponseEntity <> ("hallo world",HttpStatus.OK);
 	}
 	
+	@RequestMapping(value= "/loginuser/{email}/{password}", method= RequestMethod.GET)
+	public ResponseEntity <String> loginUser(@PathVariable("email")String email,@PathVariable("password")String password){
+		
+		User user= userService.logindUser(email,password);
+		return new ResponseEntity <> ("done",HttpStatus.OK);
+	}
+	
+	
 }

@@ -41,4 +41,9 @@ public class UserService {
 		return this.userRepository.save(user);
 		
 	}
+
+	public User logindUser(String email, String password) {
+		// TODO Auto-generated method stub
+		return this.userRepository.findUserByEmailAndPassword(email,password) ;
+	}
 }
