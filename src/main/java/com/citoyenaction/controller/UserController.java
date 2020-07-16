@@ -2,6 +2,7 @@ package com.citoyenaction.controller;
 
 import java.util.List;
 
+import org.hibernate.query.criteria.internal.predicate.IsEmptyPredicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.citoyenaction.domain.User;
 import com.citoyenaction.service.UserService;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 
 
 @RestController
@@ -64,7 +66,12 @@ public class UserController {
 	public ResponseEntity <String> loginUser(@PathVariable("email")String email,@PathVariable("password")String password){
 		
 		User user= userService.logindUser(email,password);
-		return new ResponseEntity <> ("done",HttpStatus.OK);
+		if(user != null) {
+			return new ResponseEntity <> ("done",HttpStatus.OK);
+		}else {
+			return new ResponseEntity <> ("not found",HttpStatus.NOT_FOUND);
+		}
+		
 	}
 	
 	
