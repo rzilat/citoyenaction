@@ -34,9 +34,8 @@ public class UserController {
 	}
 	
 	@RequestMapping(value= "/user", method= RequestMethod.POST)
-	@ResponseStatus(HttpStatus.CREATED)
-	public void addUser(@RequestBody User user) {
-		userService.addUser(user);
+	public ResponseEntity <User> addUser(@RequestBody User user) {
+		return new ResponseEntity<> (userService.addUser(user),HttpStatus.CREATED);
 		
 	}
 	
