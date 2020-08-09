@@ -14,7 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -35,6 +38,8 @@ public class ActNonCivique {
 	private String description;
 	
 	@Column(name = "date", nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern= "yyyy-MM-dd HH:mm:ss")
 	private Date date;
 	
 	@Column(name = "photo", nullable = false)
