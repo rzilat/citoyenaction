@@ -66,7 +66,7 @@ public class UserController {
 		
 		User user= userService.loginUser(email, password);
 		if(user != null) {
-			return new ResponseEntity<> (userService.loginUser(email, password),HttpStatus.FOUND);
+			return new ResponseEntity<> (userService.loginUser(email, password),HttpStatus.OK);
 		}else {
 			return new ResponseEntity <> (null,HttpStatus.NOT_FOUND);
 		}
