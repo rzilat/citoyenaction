@@ -57,7 +57,7 @@ public class ReactionController {
 		
 	}
 	
-	@RequestMapping(value= "/reactions/findByActNonCiviqueId/{actNonCiviqueId}", method=RequestMethod.GET)
+	@RequestMapping(value= "/reactions/findbyactnonciviqueId/{actNonCiviqueId}", method=RequestMethod.GET)
 	public ResponseEntity<List<Reaction>> getReactionsByActNonCiviqueId(@PathVariable("actNonCiviqueId")long actNonCiviqueId)
 	
 	{

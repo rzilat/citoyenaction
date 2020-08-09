@@ -24,19 +24,19 @@ public class ActNonCiviqueController {
 	@Autowired
 	private ActNonCiviqueService actNonCiviqueService;
 	
-	@RequestMapping(value= "/actNonCiviques", method= RequestMethod.GET)
+	@RequestMapping(value= "/actnonciviques", method= RequestMethod.GET)
 	public ResponseEntity <List<ActNonCivique>> getAllActNonCiviques(){
 		List<ActNonCivique> actNonCiviques= actNonCiviqueService.findAll();
 		return new ResponseEntity <> (actNonCiviques,HttpStatus.OK) ;
 		}
 	
-	@RequestMapping(value= "/actNonCivique", method= RequestMethod.POST)
+	@RequestMapping(value= "/actnoncivique", method= RequestMethod.POST)
 	public ResponseEntity <ActNonCivique> addUser(@RequestBody ActNonCivique actNonCivique) {
 		return new ResponseEntity<> (actNonCiviqueService.addActNonCivique(actNonCivique),HttpStatus.CREATED);
 		
 	}
 	
-	@RequestMapping(value= "/actNonCivique/{id}", method= RequestMethod.GET)
+	@RequestMapping(value= "/actnoncivique/{id}", method= RequestMethod.GET)
 	public ResponseEntity <ActNonCivique> getActNonCivique(@PathVariable("id")long actNonCiviqueId){
 		
 		ActNonCivique actNonCivique= actNonCiviqueService.findActNonCivique(actNonCiviqueId);
@@ -44,18 +44,18 @@ public class ActNonCiviqueController {
 		
 	}
 	
-	@RequestMapping(value= "/actNonCivique/{id}", method= RequestMethod.DELETE)
+	@RequestMapping(value= "/actnoncivique/{id}", method= RequestMethod.DELETE)
 	public void deleteActNonCivique(@PathVariable("id")long actNonCiviqueId){
 		actNonCiviqueService.deleteActNonCivique(actNonCiviqueId);
 	}
 	
-	@RequestMapping(value= "/actNonCivique", method= RequestMethod.PUT)
+	@RequestMapping(value= "/actnoncivique", method= RequestMethod.PUT)
 	public ResponseEntity <ActNonCivique> updateActNonCivique(@RequestBody ActNonCivique actNonCivique) {
 		return new ResponseEntity <> (actNonCiviqueService.updateActNonCivique(actNonCivique),HttpStatus.OK);
 		
 	}
 	
-	@RequestMapping(value= "/actNonCiviques/findByUserId/{userId}", method=RequestMethod.GET)
+	@RequestMapping(value= "/actnonciviques/findbyuserid/{userId}", method=RequestMethod.GET)
 	public ResponseEntity<List<ActNonCivique>> getActNonCiviqueByUserId(@PathVariable("userId")long userId)
 	
 	{
