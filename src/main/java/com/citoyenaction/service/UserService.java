@@ -42,7 +42,7 @@ public class UserService {
 		
 	}
 
-	public User logindUser(String email, String password) {
+	public User loginUser(String email, String password) {
 		// TODO Auto-generated method stub
 		return this.userRepository.findUserByEmailAndPassword(email,password) ;
 	}
