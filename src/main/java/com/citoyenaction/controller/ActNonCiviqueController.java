@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.citoyenaction.domain.ActNonCivique;
-
+import com.citoyenaction.domain.User;
 import com.citoyenaction.service.ActNonCiviqueService;
 
 
@@ -31,9 +31,9 @@ public class ActNonCiviqueController {
 		}
 	
 	@RequestMapping(value= "/actNonCivique", method= RequestMethod.POST)
-	@ResponseStatus(HttpStatus.CREATED)
-	public void addActNonCivique(@RequestBody ActNonCivique actNonCivique) {
-		actNonCiviqueService.addActNonCivique(actNonCivique);
+	public ResponseEntity <ActNonCivique> addUser(@RequestBody ActNonCivique actNonCivique) {
+		return new ResponseEntity<> (actNonCiviqueService.addActNonCivique(actNonCivique),HttpStatus.CREATED);
+		
 	}
 	
 	@RequestMapping(value= "/actNonCivique/{id}", method= RequestMethod.GET)

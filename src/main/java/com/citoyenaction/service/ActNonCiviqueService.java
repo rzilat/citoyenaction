@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.citoyenaction.domain.ActNonCivique;
-
+import com.citoyenaction.domain.User;
 import com.citoyenaction.repository.ActNonCiviqueRepository;
 
 @Service
@@ -15,9 +15,9 @@ public class ActNonCiviqueService {
 	@Autowired
 	private ActNonCiviqueRepository actNonCiviqueRepository;
 	
-	public void addActNonCivique(ActNonCivique actNonCivique) {
+	public ActNonCivique addActNonCivique(ActNonCivique actNonCivique) {
 		
-		actNonCiviqueRepository.save(actNonCivique);
+		return this.actNonCiviqueRepository.save(actNonCivique);
 		
 	}
 	
