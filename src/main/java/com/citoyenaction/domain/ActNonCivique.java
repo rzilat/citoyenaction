@@ -37,9 +37,7 @@ public class ActNonCivique {
 	@Column(name = "description", nullable = false, length = 255)
 	private String description;
 	
-	@Column(name = "date", nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(pattern= "yyyy-MM-dd HH:mm:ss")
+	@Column(name = "date", nullable = true)
 	private Date date;
 	
 	@Column(name = "photo", nullable = false)
