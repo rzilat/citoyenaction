@@ -31,7 +31,7 @@ public class ActNonCiviqueController {
 		}
 	
 	@RequestMapping(value= "/actnoncivique", method= RequestMethod.POST)
-	public ResponseEntity <ActNonCivique> addUser(@RequestBody ActNonCivique actNonCivique) {
+	public ResponseEntity <ActNonCivique> addActNonCivique(@RequestBody ActNonCivique actNonCivique) {
 		return new ResponseEntity<> (actNonCiviqueService.addActNonCivique(actNonCivique),HttpStatus.CREATED);
 		
 	}
