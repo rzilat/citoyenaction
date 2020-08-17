@@ -29,7 +29,7 @@ public class ActUploadController {
 	private ActUploadService actUploadService;
 	
 	@RequestMapping(value= "/actupload", method= RequestMethod.POST,headers = "content-type=multipart/*")
-	public ResponseEntity <ActUpload> saveActUpload(HttpServletRequest request, @RequestPart(required = true) MultipartFile file ) throws IOException {
+	public ResponseEntity <ActUpload> saveActUpload(@RequestPart String description, @RequestPart(required = true) MultipartFile file ) throws IOException {
 		String fileName = file.getOriginalFilename();
 		byte[] fileData = file.getBytes();
 		ActUpload actUpload = new ActUpload();
