@@ -22,6 +22,7 @@ import com.citoyenaction.service.ActUploadService;
 
 
 @RestController
+@RequestMapping(value= "/citoyenaction")
 public class ActUploadController {
 	
 	@Autowired
