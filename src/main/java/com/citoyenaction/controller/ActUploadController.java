@@ -1,6 +1,7 @@
 package com.citoyenaction.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import com.citoyenaction.domain.ActUpload;
+
 import com.citoyenaction.service.ActUploadService;
 
 
@@ -37,5 +39,12 @@ public class ActUploadController {
 		return new ResponseEntity<> (actUpload,HttpStatus.OK);
 		
 	}
+	
+	
+	@RequestMapping(value= "/actuploads", method= RequestMethod.GET)
+	public ResponseEntity <List<ActUpload>> getAllActUploads(){
+		List<ActUpload> actUploads= actUploadService.findAll();
+		return new ResponseEntity <> (actUploads,HttpStatus.OK) ;
+		}
 
 }
