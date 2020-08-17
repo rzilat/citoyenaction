@@ -33,7 +33,7 @@ public class ActUploadController {
 		actUpload.setFileName(fileName);
 		actUpload.setFileData(fileData);
 		actUpload = actUploadService.saveActUpload(actUpload);
-		actUpload.toString();
+		//actUpload.toString();
 		return new ResponseEntity<> (actUpload,HttpStatus.OK);
 		
 	}
