@@ -36,16 +36,16 @@ public class ActNonCiviqueController {
 		
 	}
 	
-	@RequestMapping(value= "/actnoncivique/{id}", method= RequestMethod.GET)
-	public ResponseEntity <ActNonCivique> getActNonCivique(@PathVariable("id")long actNonCiviqueId){
+	@RequestMapping(value= "/actnoncivique/{actNonCiviqueId}", method= RequestMethod.GET)
+	public ResponseEntity <ActNonCivique> getActNonCivique(@PathVariable("actNonCiviqueId")long actNonCiviqueId){
 		
 		ActNonCivique actNonCivique= actNonCiviqueService.findActNonCivique(actNonCiviqueId);
 		return new ResponseEntity <> (actNonCivique,HttpStatus.OK);
 		
 	}
 	
-	@RequestMapping(value= "/actnoncivique/{id}", method= RequestMethod.DELETE)
-	public void deleteActNonCivique(@PathVariable("id")long actNonCiviqueId){
+	@RequestMapping(value= "/actnoncivique/{actNonCiviqueId}", method= RequestMethod.DELETE)
+	public void deleteActNonCivique(@PathVariable("actNonCiviqueId")long actNonCiviqueId){
 		actNonCiviqueService.deleteActNonCivique(actNonCiviqueId);
 	}
 	

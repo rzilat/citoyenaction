@@ -38,16 +38,16 @@ public class ReactionController {
 		reactionService.addReaction(reaction);
 		
 	}
-	@RequestMapping(value= "/reaction/{id}", method= RequestMethod.GET)
-	public ResponseEntity <Reaction> getReaction(@PathVariable("id")long reactionId){
+	@RequestMapping(value= "/reaction/{reactionId}", method= RequestMethod.GET)
+	public ResponseEntity <Reaction> getReaction(@PathVariable("reactionId")long reactionId){
 		
 		Reaction reaction= reactionService.findReaction(reactionId);
 		return new ResponseEntity <> (reaction,HttpStatus.OK);
 		
 	}
 	
-	@RequestMapping(value= "/reaction/{id}", method= RequestMethod.DELETE)
-	public void deleteReaction(@PathVariable("id")long reactionId){
+	@RequestMapping(value= "/reaction/{reactionId}", method= RequestMethod.DELETE)
+	public void deleteReaction(@PathVariable("reactionId")long reactionId){
 		reactionService.deleteReaction(reactionId);
 	}
 	
