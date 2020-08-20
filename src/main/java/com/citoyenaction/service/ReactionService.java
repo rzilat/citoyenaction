@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.citoyenaction.domain.Reaction;
 import com.citoyenaction.repository.ReactionRepository;
 
@@ -15,9 +16,9 @@ public class ReactionService {
 	@Autowired
 	private ReactionRepository reactionRepository;
 	
-	public void addReaction(Reaction reaction) {
+	public Reaction addReaction(Reaction reaction) {
 		
-		reactionRepository.save(reaction);
+		return this.reactionRepository.save(reaction);
 		
 	}
 	

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.citoyenaction.domain.Reaction;
@@ -33,9 +32,8 @@ public class ReactionController {
 	}
 	
 	@RequestMapping(value= "/reaction", method= RequestMethod.POST)
-	@ResponseStatus(HttpStatus.CREATED)
-	public void addReaction(@RequestBody Reaction reaction) {
-		reactionService.addReaction(reaction);
+	public ResponseEntity <Reaction> addReaction(@RequestBody Reaction reaction) {
+		return new ResponseEntity<> (reactionService.addReaction(reaction),HttpStatus.CREATED);
 		
 	}
 	@RequestMapping(value= "/reaction/{reactionId}", method= RequestMethod.GET)
