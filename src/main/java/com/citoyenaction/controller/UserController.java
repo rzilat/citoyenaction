@@ -39,26 +39,21 @@ public class UserController {
 		
 	}
 	
-	@RequestMapping(value= "/user/{id}", method= RequestMethod.GET)
-	public ResponseEntity <User> getUser(@PathVariable("id")long id){
+	@RequestMapping(value= "/user/{userId}", method= RequestMethod.GET)
+	public ResponseEntity <User> getUser(@PathVariable("userId")long userId){
 		
-		User user= userService.findUser(id);
+		User user= userService.findUser(userId);
 		return new ResponseEntity <> (user,HttpStatus.OK);
 	}
 	
-	@RequestMapping(value= "/user/{id}", method= RequestMethod.DELETE)
-	public void deleteUser(@PathVariable("id")long id){
-		userService.deleteUser(id);
+	@RequestMapping(value= "/user/{userId}", method= RequestMethod.DELETE)
+	public void deleteUser(@PathVariable("userId")long userId){
+		userService.deleteUser(userId);
 	}
 	
 	@RequestMapping(value= "/user", method= RequestMethod.PUT)
 	public ResponseEntity <User> updateUser(@RequestBody User user) {
 		return new ResponseEntity <> (userService.updateUser(user),HttpStatus.OK);
-	}
-	
-	@RequestMapping(value= "/message", method= RequestMethod.GET)
-	public ResponseEntity <String> getMessage(){
-		return new ResponseEntity <> ("hallo world",HttpStatus.OK);
 	}
 	
 	@RequestMapping(value= "/loginuser/{email}/{password}", method= RequestMethod.GET)

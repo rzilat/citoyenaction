@@ -21,9 +21,9 @@ public class UserService {
 		
 	}
 	
-	public User findUser(long id) {
+	public User findUser(long userId) {
 		
-	return this.userRepository.getOne(id) ;
+	return this.userRepository.getOne(userId) ;
 		
 	}
 	
@@ -32,8 +32,8 @@ public class UserService {
 		
 	}
 	
-	public void deleteUser(long id) {
-		 userRepository.deleteById(id);
+	public void deleteUser(long userId) {
+		 userRepository.deleteById(userId);
 		
 	}
 	
