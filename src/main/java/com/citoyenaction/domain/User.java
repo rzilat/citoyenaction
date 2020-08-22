@@ -93,6 +93,14 @@ public class User {
 		this.password = password;
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	
 	
 	

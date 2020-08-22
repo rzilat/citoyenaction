@@ -43,7 +43,7 @@ public class Reaction {
 	
 	
 	@ManyToOne
-    @JoinColumn(name="user_id",nullable=false)
+    @JoinColumn(name="userId",nullable=false)
 	private User user;
 	
 	@ManyToOne
@@ -80,6 +80,14 @@ public class Reaction {
 
 	public void setEvaluation(String evaluation) {
 		this.evaluation = evaluation;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public User getUser() {
