@@ -1,6 +1,7 @@
 package com.citoyenaction.domain;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,7 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -35,6 +39,11 @@ public class User {
 	
 	@Column(name = "password", nullable = false, length = 255)
 	private String password;
+	
+	@Column(name = "date", nullable = true)
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+	private Date date;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<ActNonCivique> actNonCiviques= new ArrayList<>();
