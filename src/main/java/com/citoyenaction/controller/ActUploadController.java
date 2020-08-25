@@ -1,5 +1,6 @@
 package com.citoyenaction.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -27,8 +28,8 @@ public class ActUploadController {
 	@Autowired
 	private ActUploadService actUploadService;
 	
-	@RequestMapping(value= "/actupload", method= RequestMethod.POST,headers = "content-type=multipart/*")
-	public ResponseEntity <String> saveActUpload(@RequestParam String description, @RequestParam(required = true) MultipartFile file ) throws IOException {
+	@RequestMapping(value= "/actupload", method= RequestMethod.POST)
+	public ResponseEntity <String> saveActUpload(@RequestParam String description, @RequestParam MultipartFile file ) throws IOException {
 		String fileName = file.getOriginalFilename();
 		byte[] fileData = file.getBytes();
 		ActUpload actUpload = new ActUpload();
