@@ -30,9 +30,9 @@ public class ActUpload {
 	@Lob
 	private byte[] fileData;
 	
-	/*@ManyToOne
+	@ManyToOne
 	@JoinColumn(name = "ActNonCiviqueId", nullable = false)
-	private ActNonCivique actNonCiviqueId;*/
+	private ActNonCivique actNonCivique;
 
 	public long getActUploadId() {
 		return actUploadId;
@@ -65,6 +65,16 @@ public class ActUpload {
 	public void setFileData(byte[] fileData) {
 		this.fileData = fileData;
 	}
+
+	public ActNonCivique getActNonCivique() {
+		return actNonCivique;
+	}
+
+	public void setActNonCivique(ActNonCivique actNonCivique) {
+		this.actNonCivique = actNonCivique;
+	}
+
+	
 
 	
 	

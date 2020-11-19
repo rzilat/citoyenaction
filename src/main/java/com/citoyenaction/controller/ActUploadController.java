@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-
+import com.citoyenaction.domain.ActNonCivique;
 import com.citoyenaction.domain.ActUpload;
-
+import com.citoyenaction.service.ActNonCiviqueService;
 import com.citoyenaction.service.ActUploadService;
 
 
@@ -28,15 +28,20 @@ public class ActUploadController {
 	@Autowired
 	private ActUploadService actUploadService;
 	
+	@Autowired
+	private ActNonCiviqueService actNonCiviqueService;
+	
+	
 	@RequestMapping(value= "/actupload", method= RequestMethod.POST)
-	public ResponseEntity <String> saveActUpload(@RequestParam String description, @RequestParam MultipartFile file ) throws IOException {
+	public ResponseEntity <String> saveActUpload(@RequestParam long actNonCiviqueId, @RequestParam String description, @RequestParam MultipartFile file ) throws IOException {
 		String fileName = file.getOriginalFilename();
 		byte[] fileData = file.getBytes();
 		ActUpload actUpload = new ActUpload();
+		ActNonCivique actNonCivique = actNonCiviqueService.findActNonCivique(actNonCiviqueId);
+		actUpload.setActNonCivique(actNonCivique);
 		actUpload.setFileName(fileName);
 		actUpload.setFileData(fileData);
 		actUpload = actUploadService.saveActUpload(actUpload);
-		//actUpload.toString();
 		return new ResponseEntity<> ("file uploaded",HttpStatus.OK);
 	}
 	

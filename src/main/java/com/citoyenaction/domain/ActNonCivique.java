@@ -58,6 +58,10 @@ public class ActNonCivique {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Reaction> reactions= new ArrayList<>();
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<ActUpload> actUploads= new ArrayList<>();
+	
 
 	public long getActNonCiviqueId() {
 		return actNonCiviqueId;
