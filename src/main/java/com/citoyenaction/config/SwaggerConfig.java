@@ -26,11 +26,7 @@ public class SwaggerConfig
 	
 	@Autowired
 	Environment env;
-	
-	/**
-	 * @return
-	 * Here is an example where we select any api that matches one of these paths
-	 */
+
 	@SuppressWarnings("unchecked")
 	private Predicate<String> paths()
 	{
@@ -51,11 +47,14 @@ public class SwaggerConfig
 	
 	private ApiInfo apiInfo()
 	{
-		return new ApiInfo("Codehelp service REST API", "Code Help service.",
+		return new ApiInfo("CitoyenAction service REST API", "Citoyen Action service.",
 				env.getProperty("info.build.version"),
 				"CitoyenAction service", 
-				new Contact("Reda Zilat", "http://www.citoyenaction.com", "redaovish200@hotmail.com"), "License of API", "API license URL", Collections.emptyList());
+				new Contact("Reda Zilat", "http://www.citoyenaction.com",
+							"redaovish200@hotmail.com"), 
+							"License of API", "API license URL",
+							Collections.emptyList());
 	}
-	// @formatter:on
+	
 	
 }
