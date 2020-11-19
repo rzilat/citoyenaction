@@ -18,5 +18,9 @@ public interface ActNonCiviqueRepository extends JpaRepository<ActNonCivique,Lon
 	@Query("select a from ActNonCivique a where a.user.userId=?1")
 	List<ActNonCivique> findActNonCiviqueByUserId(long userId);
 	
+	@Query("select a from ActNonCivique a where a.statut=?1")
+	List<ActNonCivique> findActNonCiviqueByStatut(String statut);
+	
+	
 
 }

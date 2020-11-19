@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.citoyenaction.domain.ActNonCivique;
+import com.citoyenaction.domain.Statut;
 import com.citoyenaction.domain.User;
 import com.citoyenaction.repository.ActNonCiviqueRepository;
 
@@ -16,7 +17,7 @@ public class ActNonCiviqueService {
 	private ActNonCiviqueRepository actNonCiviqueRepository;
 	
 	public ActNonCivique addActNonCivique(ActNonCivique actNonCivique) {
-		
+		actNonCivique.setStatut(Statut.PENDING.toString());
 		return this.actNonCiviqueRepository.save(actNonCivique);
 		
 	}
@@ -43,7 +44,18 @@ public class ActNonCiviqueService {
 	public List<ActNonCivique> findActNonCiviquesByUserId(long userId) {
 		return this.actNonCiviqueRepository.findActNonCiviqueByUserId(userId);
 	
+	}
+	
+	public List<ActNonCivique> findActNonCiviquesByStatut(String statut) {
+		return this.actNonCiviqueRepository.findActNonCiviqueByStatut(statut);
+	
 
-}
+	}
+
+	public void aprouvedActNonCivique(long actNonCiviqueId) {
+		ActNonCivique actNonCivique = actNonCiviqueRepository.getOne(actNonCiviqueId);
+		actNonCivique.setStatut(Statut.APROUVED.toString());
+		this.actNonCiviqueRepository.save(actNonCivique);
+	}
 
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.citoyenaction.domain.ActNonCivique;
+import com.citoyenaction.domain.Statut;
 import com.citoyenaction.domain.User;
 import com.citoyenaction.service.ActNonCiviqueService;
 
@@ -26,7 +27,7 @@ public class ActNonCiviqueController {
 	
 	@RequestMapping(value= "/actnonciviques", method= RequestMethod.GET)
 	public ResponseEntity <List<ActNonCivique>> getAllActNonCiviques(){
-		List<ActNonCivique> actNonCiviques= actNonCiviqueService.findAll();
+		List<ActNonCivique> actNonCiviques= actNonCiviqueService.findActNonCiviquesByStatut(Statut.APROUVED.toString());
 		return new ResponseEntity <> (actNonCiviques,HttpStatus.OK) ;
 		}
 	
@@ -55,6 +56,12 @@ public class ActNonCiviqueController {
 		
 	}
 	
+	@RequestMapping(value= "/actnoncivique/aprouved/{actNonCiviqueId}", method= RequestMethod.PUT)
+	public void aprouvedActNonCivique(@PathVariable("actNonCiviqueId")long actNonCiviqueId) {
+		actNonCiviqueService.aprouvedActNonCivique(actNonCiviqueId);
+		
+	}
+	
 	@RequestMapping(value= "/actnonciviques/findbyuserid/{userId}", method=RequestMethod.GET)
 	public ResponseEntity<List<ActNonCivique>> getActNonCiviqueByUserId(@PathVariable("userId")long userId)
 	
@@ -62,4 +69,12 @@ public class ActNonCiviqueController {
 		List<ActNonCivique> actNonCiviqueList= actNonCiviqueService.findActNonCiviquesByUserId(userId);
 		return new ResponseEntity<>(actNonCiviqueList,HttpStatus.OK);
 	}
+	
+	@RequestMapping(value= "/actnonciviques/findbystatut/{statut}", method=RequestMethod.GET)
+	public ResponseEntity<List<ActNonCivique>> getActNonCiviqueByStatut(@PathVariable("statut")Statut statut)
+	
+	{
+		List<ActNonCivique> actNonCiviqueList= actNonCiviqueService.findActNonCiviquesByStatut(statut.toString());
+		return new ResponseEntity<>(actNonCiviqueList,HttpStatus.OK);
 	}
+}

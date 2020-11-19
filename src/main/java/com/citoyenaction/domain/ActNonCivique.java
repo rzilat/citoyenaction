@@ -48,6 +48,10 @@ public class ActNonCivique {
 	@Column(name = "video", nullable = false)
 	private byte video;
 	
+	@Column(name = "statut", nullable = false)
+	private String statut;
+		
+
 	@ManyToOne
     @JoinColumn(name="user_id",nullable=false)
 	private User user;
@@ -101,6 +105,15 @@ public class ActNonCivique {
 
 	public void setVideo(byte video) {
 		this.video = video;
+	}
+	
+
+	public String getStatut() {
+		return statut;
+	}
+
+	public void setStatut(String statut) {
+		this.statut = statut;
 	}
 
 	public User getUser() {
