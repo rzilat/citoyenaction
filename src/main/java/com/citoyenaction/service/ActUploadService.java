@@ -25,6 +25,10 @@ public class ActUploadService {
 		return this.actUploadRepository.findAll();
 		
 	}
+
+	public ActUpload findActUploadByActNonCiviqueId(long actNonCiviqueId) {
+		return this.actUploadRepository.findActUploadByActNonCiviqueId(actNonCiviqueId);
+	}
 	
 	
 
